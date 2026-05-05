@@ -1,9 +1,13 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@export var SPEED = 0
+@export var JUMP_VELOCITY = 0
 
+@export var _kickRight: Node2D
+
+func _enter_tree() -> void:
+	_disableKick()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -11,7 +15,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -22,4 +26,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	if Input.is_action_just_pressed("ui_accept"):
+		_kick()
+
 	move_and_slide()
+
+func _kick() -> void:
+	print("player kick")
+	_kickRight.disabled = false
+	
+func _disableKick() -> void:
+	_kickRight.disabled = true
