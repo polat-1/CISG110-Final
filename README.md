@@ -1,7 +1,7 @@
 # CISG110-Final
 ## Devlogs
 ### Week 12
-Put your Week 12 Devlog answer here.
+A technical issue I encountered was having both left kick and right kick go off at the same time. I looked at what was being printed in the output to investigate this issue. I solved it by looking at the signal functions, and realizing I had right kick and left kick connected to the same signal.
 
 ### Week 13
 Put your Week 13 Devlog answer here.
