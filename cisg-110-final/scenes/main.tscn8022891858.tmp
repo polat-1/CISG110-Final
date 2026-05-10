@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cslvj5cind07i"]
+[gd_scene load_steps=38 format=4 uid="uid://cslvj5cind07i"]
 
 [ext_resource type="Texture2D" uid="uid://d8ip37hn34im" path="res://sprites/ninjaCat.png" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://cltbbcmy43fni" path="res://scripts/player.gd" id="1_tefeu"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://rwwibib2r7cr" path="res://scenes/bag.tscn" id="5_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c3u8spixr5jcp" path="res://sprites/environment tilesets/Borders_32x32.png" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://bo601jlyd0dfb" path="res://scenes/rat.tscn" id="9_85g3d"]
-[ext_resource type="FontFile" uid="uid://cpqidngmlrlml" path="res://fonts/VCR_OSD_MONO_1.001.ttf" id="10_choun"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0wfyh"]
 radius = 8.0
@@ -133,7 +132,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"kick",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -5542,21 +5541,16 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_eb6dy")
 
-[sub_resource type="LabelSettings" id="LabelSettings_ya4ey"]
-font = ExtResource("10_choun")
-outline_color = Color(0, 0, 0, 1)
-
 [node name="Main" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("_kickRight", "_kickLeft")]
-unique_name_in_owner = true
 z_index = 100
 position = Vector2(-239, 0)
 collision_mask = 6
 script = ExtResource("1_tefeu")
 SPEED = 300
 JUMP_VELOCITY = -500
-MAX_KICK_TIME = 0.4
+MAX_KICK_TIME = 0.2
 _kickRight = NodePath("KickRight")
 _kickLeft = NodePath("KickLeft")
 _rightKickDir = Vector2(300, 500)
@@ -5572,6 +5566,7 @@ position = Vector2(1, -1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_o6xl0")
 animation = &"kick"
+frame_progress = 0.79571617
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, 0)
@@ -5624,16 +5619,6 @@ position = Vector2(286, 31)
 position = Vector2(168, -65)
 
 [node name="Rat" parent="." instance=ExtResource("9_85g3d")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PointsLabel" type="Label" parent="CanvasLayer"]
-unique_name_in_owner = true
-offset_left = 4.0
-offset_right = 57.0
-offset_bottom = 23.0
-text = "points: 0"
-label_settings = SubResource("LabelSettings_ya4ey")
 
 [connection signal="body_shape_entered" from="Player/KickRight" to="Player" method="_on_kick_right_body_shape_entered"]
 [connection signal="body_shape_entered" from="Player/KickLeft" to="Player" method="_on_kick_left_body_shape_entered"]

@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+@onready var _anims = get_node("AnimatedSprite2D")
+
 @export var SPEED = 0
 @export var JUMP_VELOCITY = 0
 
@@ -13,8 +15,18 @@ extends CharacterBody2D
 @export var _rightKickDir = Vector2.RIGHT
 @export var _leftKickDir = Vector2.LEFT
 
+@export var _points = 0
+
 var _facingRight: bool = true
 
+func _subtract_point() -> void:
+	_points -= 1
+	%PointsLabel.text = "points: %s" % _points
+
+func _add_point() -> void:
+	_points += 1
+	%PointsLabel.text = "points: %s" % _points
+	
 func _enter_tree() -> void:
 	_disableKick()
 
@@ -37,8 +49,10 @@ func _physics_process(delta: float) -> void:
 
 	if direction > 0:
 		_facingRight = true
+		_anims.flip_h = false
 	elif direction < 0:
 		_facingRight = false
+		_anims.flip_h = true
 
 	if KICK_TIMER > 0:
 		KICK_TIMER -= delta
@@ -47,6 +61,13 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("ui_accept"):
 		_kick()
+		
+	if velocity.x == 0 && KICK_TIMER <= 0:
+		_anims.play("idle")
+	elif velocity.x != 0 && KICK_TIMER <= 0:
+		_anims.play("walking")
+	elif KICK_TIMER == MAX_KICK_TIME:
+		_anims.play("kick")
 
 	move_and_slide()
 

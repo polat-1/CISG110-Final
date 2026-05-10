@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://rwwibib2r7cr"]
+[gd_scene load_steps=6 format=3 uid="uid://rwwibib2r7cr"]
 
 [ext_resource type="Texture2D" uid="uid://bj4vvn80427sh" path="res://sprites/item_tileset.png" id="1_6bjnb"]
+[ext_resource type="PackedScene" uid="uid://d4gikpj81ejkx" path="res://scenes/explosion_vfx.tscn" id="1_8dtae"]
+[ext_resource type="Script" uid="uid://basww45gdk3ef" path="res://scripts/prop.gd" id="1_qlbld"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tipki"]
 radius = 1.3777646
@@ -9,10 +11,15 @@ radius = 1.3777646
 atlas = ExtResource("1_6bjnb")
 region = Rect2(0, 0, 98.05051, 55.162262)
 
-[node name="Bag" type="RigidBody2D"]
+[node name="Bag" type="RigidBody2D" node_paths=PackedStringArray("_explosion_VFX")]
 z_index = 10
 collision_layer = 4
 collision_mask = 7
+script = ExtResource("1_qlbld")
+_explosion_VFX = NodePath("ExplosionVFX")
+
+[node name="ExplosionVFX" parent="." instance=ExtResource("1_8dtae")]
+position = Vector2(99, -17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(98, -18)
@@ -25,3 +32,5 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_85g3d")
 region_enabled = true
 region_rect = Rect2(72, 1, 15, 12)
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

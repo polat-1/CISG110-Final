@@ -12,6 +12,7 @@ func _ready() -> void:
 	
 func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	if _was_kicked:
+		%Player._add_point()
 		_explosion_VFX.emitting = true
 		
 		_explosion_VFX.reparent(get_parent())

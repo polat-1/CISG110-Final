@@ -7,7 +7,7 @@ A technical issue I encountered was having both left kick and right kick go off 
 A technical issue I encountered was figuring out how to make the rat explode after it came in contact with the player. I referenced the prop script to help me investigate this. I figured out how to do this by referencing the video and looking at how the prop script functioned.
 
 ### Week 14
-Put your Week 14 Devlog answer here.
+A technical issue I encountered was trying to get my player to play the kick animation, instead of continuing to idle or walk. I solved it by rewatching the video, trying different if statements that checked things like the KICK_TIMER, and adjusting the MAX_KICK_TIME. I was able to set the MAX_KICK_TIME to the exact duration of the kick animation by using the formula 1 / (frames per second) * (max frames). I stopped the other animations from interrupting my kick animation by adding to their if statements a check to see if the KICK_TIMER is <= 0.
 
 ### Week 15
 Put your Week 15 Devlog answer here.
