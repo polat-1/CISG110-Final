@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckad65sp5rl5v"]
+
+[ext_resource type="Texture2D" uid="uid://bj4vvn80427sh" path="res://sprites/item_tileset.png" id="1_0hbr2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tipki"]
+radius = 1.3777646
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85g3d"]
+atlas = ExtResource("1_0hbr2")
+region = Rect2(0, 0, 98.05051, 55.162262)
+
+[node name="Cola" type="RigidBody2D"]
+z_index = 10
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(98, -18)
+scale = Vector2(5.5641146, 13.809921)
+shape = SubResource("CircleShape2D_tipki")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(98, -18)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_85g3d")
+region_enabled = true
+region_rect = Rect2(43, 1, 6, 19)
