@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cslvj5cind07i"]
+[gd_scene load_steps=23 format=4 uid="uid://cslvj5cind07i"]
 
 [ext_resource type="Texture2D" uid="uid://d8ip37hn34im" path="res://sprites/ninjaCat.png" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://cltbbcmy43fni" path="res://scripts/player.gd" id="1_tefeu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ckad65sp5rl5v" path="res://scenes/cola.tscn" id="4_tipki"]
 [ext_resource type="PackedScene" uid="uid://rwwibib2r7cr" path="res://scenes/bag.tscn" id="5_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c3u8spixr5jcp" path="res://sprites/environment tilesets/Borders_32x32.png" id="5_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://bo601jlyd0dfb" path="res://scenes/rat.tscn" id="9_85g3d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0wfyh"]
 radius = 8.0
@@ -5473,9 +5474,6 @@ collision_mask = 4
 position = Vector2(-17.672413, 0.39682522)
 shape = SubResource("CircleShape2D_tefeu")
 
-[node name="Teddy" parent="." instance=ExtResource("3_o6xl0")]
-position = Vector2(-175, 31)
-
 [node name="Cola" parent="." instance=ExtResource("4_tipki")]
 position = Vector2(-64, -63)
 
@@ -5503,6 +5501,8 @@ position = Vector2(286, 31)
 
 [node name="Teddy3" parent="." instance=ExtResource("3_o6xl0")]
 position = Vector2(168, -65)
+
+[node name="Rat" parent="." instance=ExtResource("9_85g3d")]
 
 [connection signal="body_shape_entered" from="Player/KickRight" to="Player" method="_on_kick_right_body_shape_entered"]
 [connection signal="body_shape_entered" from="Player/KickLeft" to="Player" method="_on_kick_left_body_shape_entered"]

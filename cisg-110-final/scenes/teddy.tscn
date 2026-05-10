@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://id1rayda1h5m"]
 
-[ext_resource type="Script" uid="uid://dul0mxyaorkjy" path="res://scenes/prop.gd" id="1_aidnh"]
 [ext_resource type="Texture2D" uid="uid://bj4vvn80427sh" path="res://sprites/item_tileset.png" id="1_rgc40"]
+[ext_resource type="Script" uid="uid://basww45gdk3ef" path="res://scripts/prop.gd" id="1_t4g8a"]
 [ext_resource type="PackedScene" uid="uid://d4gikpj81ejkx" path="res://scenes/explosion_vfx.tscn" id="2_t4g8a"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rgc40"]
@@ -19,7 +19,7 @@ z_index = 10
 collision_layer = 4
 collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_rgc40")
-script = ExtResource("1_aidnh")
+script = ExtResource("1_t4g8a")
 _explosion_VFX = NodePath("ExplosionVFX")
 
 [node name="ExplosionVFX" parent="." instance=ExtResource("2_t4g8a")]
